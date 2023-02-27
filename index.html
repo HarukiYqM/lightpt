@@ -1,0 +1,338 @@
+<script src="jquery.min.js" type="text/javascript"></script> 
+
+<style type="text/css">
+	body {
+		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+		font-weight:300;
+		font-size:18px;
+		margin-left: auto;
+		margin-right: auto;
+		width: 1100px;
+	}
+	
+	h1 {
+		font-size:32px;
+		font-weight:300;
+	}
+	
+	.disclaimerbox {
+		background-color: #eee;		
+		border: 1px solid #eeeeee;
+		border-radius: 10px ;
+		-moz-border-radius: 10px ;
+		-webkit-border-radius: 10px ;
+		padding: 20px;
+	}
+
+	video.header-vid {
+		height: 140px;
+		border: 1px solid black;
+		border-radius: 10px ;
+		-moz-border-radius: 10px ;
+		-webkit-border-radius: 10px ;
+	}
+	
+	img.header-img {
+		height: 140px;
+		border: 1px solid black;
+		border-radius: 10px ;
+		-moz-border-radius: 10px ;
+		-webkit-border-radius: 10px ;
+	}
+	
+	img.rounded {
+		border: 1px solid #eeeeee;
+		border-radius: 10px ;
+		-moz-border-radius: 10px ;
+		-webkit-border-radius: 10px ;
+	}
+	
+	a:link,a:visited
+	{
+		color: #1367a7;
+		text-decoration: none;
+	}
+	a:hover {
+		color: #208799;
+	}
+	
+	td.dl-link {
+		height: 160px;
+		text-align: center;
+		font-size: 22px;
+	}
+	
+	.layered-paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+		box-shadow:
+		0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+		5px 5px 0 0px #fff, /* The second layer */
+		5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+		10px 10px 0 0px #fff, /* The third layer */
+		10px 10px 1px 1px rgba(0,0,0,0.35), /* The third layer shadow */
+		15px 15px 0 0px #fff, /* The fourth layer */
+		15px 15px 1px 1px rgba(0,0,0,0.35), /* The fourth layer shadow */
+		20px 20px 0 0px #fff, /* The fifth layer */
+		20px 20px 1px 1px rgba(0,0,0,0.35), /* The fifth layer shadow */
+		25px 25px 0 0px #fff, /* The fifth layer */
+		25px 25px 1px 1px rgba(0,0,0,0.35); /* The fifth layer shadow */
+		margin-left: 10px;
+		margin-right: 45px;
+	}
+
+	.paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+		box-shadow:
+		0px 0px 1px 1px rgba(0,0,0,0.35); /* The top layer shadow */
+
+		margin-left: 10px;
+		margin-right: 45px;
+	}
+
+
+	.layered-paper { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+		box-shadow:
+		0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+		5px 5px 0 0px #fff, /* The second layer */
+		5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+		10px 10px 0 0px #fff, /* The third layer */
+		10px 10px 1px 1px rgba(0,0,0,0.35); /* The third layer shadow */
+		margin-top: 5px;
+		margin-left: 10px;
+		margin-right: 30px;
+		margin-bottom: 5px;
+	}
+	
+	.vert-cent {
+		position: relative;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+	
+	hr
+	{
+		border: 0;
+		height: 1px;
+		background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+	}
+</style>
+
+<html>
+<head>
+	<title>LightPainter: Interactive Portrait Relighting with Freehand Scribble</title>
+	<meta property="og:image" content="Path to my teaser.png"/> <!-- Facebook automatically scrapes this. Go to https://developers.facebook.com/tools/debug/ if you update and want to force Facebook to rescrape. -->
+	<meta property="og:title" content="LightPainter: Interactive Portrait Relighting with Freehand Scribble" />
+	<meta property="og:description" content="Paper description." />
+
+	<!-- Get from Google Analytics -->
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src=""></script> 
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-75863369-6');
+	</script>
+</head>
+
+<body>
+	<br>
+	<center>
+		<span style="font-size:36px">LightPainter: Interactive Portrait Relighting with Freehand Scribble</span>
+		<table align=center width=1000px>
+			<table align=center width=1000px>
+				<tr>
+					<td align=center width=100px>
+						<center>
+							<span style="font-size:24px"><a href="https://yiqunmei.net">Yiqun Mei<sup>1</sup></a></span>
+						</center>
+					</td>
+					<td align=center width=100px>
+						<center>
+							<span style="font-size:24px"><a href="">He Zhang<sup>2</sup></a></span>
+						</center>
+					</td>
+					<td align=center width=100px>
+						<center>
+							<span style="font-size:24px"><a href=""> Xuaner Zhang<sup>2</sup></a></span>
+						</center>
+					</td>
+					<td align=center width=100px>
+						<center>
+							<span style="font-size:24px"><a href="">Jianming Zhang<sup>2</sup></a></span>
+						</center>
+					</td>
+					<td align=center width=100px>
+						<center>
+							<span style="font-size:24px"><a href="">Zhixin Shu<sup>2</sup></a></span>
+						</center>
+					</td>
+				</tr>
+				<tr>
+					<td align=center width=100px>
+						<center>
+							<span style="font-size:24px"><a href="">Yilin Wang<sup>2</sup></a></span>
+						</center>
+					</td>
+				
+					<td align=center width=100px>
+						<center>
+							<span style="font-size:24px"><a href="">Zijun Wei<sup>2</sup></a></span>
+						</center>
+					</td>
+					<td align=center width=100px>
+						<center>
+							<span style="font-size:24px"><a href="">Shi Yan<sup>2</sup></a></span>
+						</center>
+					</td>
+					<td align=center width=100px>
+						<center>
+							<span style="font-size:24px"><a href="">HyunJoon Jung<sup>2</sup></a></span>
+						</center>
+					</td>
+					
+					<td align=center width=100px>
+						<center>
+							<span style="font-size:24px"><a href="https://engineering.jhu.edu/vpatel36/">Vishal M. Patel<sup>1</sup></a></span>
+						</center>
+					</td>
+				</tr>
+			</table>
+			<table align=center width=600px>
+				<tr>
+					<td align=center width=300px>
+						<center>
+							<span style="font-size:24px"><sup>1</sup>Johns Hopkins University</span>
+						</center>
+					</td>
+					<td align=center width=300px>
+						<center>
+							<span style="font-size:24px"><sup>2</sup>Adobe Inc.</span>
+						</center>
+					</td>
+				</tr>
+			</table>
+			<table align=center width=600px>
+				<tr>
+					<td align=center width=120px>
+						<center>
+							<span style="font-size:24px"><a href=''>[Paper]</a></span>
+						</center>
+					</td>
+					<td align=center width=360px>
+						<center>
+							<span style="font-size:24px"><a href=''>[Web Demo] (Coming soon)</a></span><br>
+						</center>
+					</td>
+				</tr>
+			</table>
+		</table>
+	</center>
+
+	<center>
+		<table align=center width=1000px>
+			<tr>
+				<td width=260px>
+					<center>
+						<img class="round" style="width:1000px" src="./resources/teaser_v1.png"/>
+					</center>
+				</td>
+			</tr>
+		</table>
+		<table align=center width=1000px>
+			<tr>
+				<td>
+					LightPainter is an interactive lighting editing system that takes in an input image with freehand scribbles drawn on top and
+					renders the correspondingly relit portrait. It enables creative portrait lighting editing (left) and allows users to reproduce a target lighting
+					effect with ease.
+				</td>
+			</tr>
+		</table>
+	</center>
+
+	<hr>
+
+	<table align=center width=1000px>
+		<center><h1>Abstract</h1></center>
+		<tr>
+			<td>
+			Recent portrait relighting methods have achieved realistic results of portrait lighting effects given a desired lighting representation such as an environment map. 
+			However, these methods are not intuitive for user interaction and lack precise lighting control. 
+			We introduce LightPainter, a scribble-based relighting system that allows users to interactively manipulate portrait lighting effect with ease. 
+			This is achieved by two conditional neural networks, a delighting module that recovers geometry and albedo optionally conditioned on skin tone, and a scribble-based module for relighting. 
+			To train the relighting module, we propose a novel scribble simulation procedure to mimic real user scribbles, which allows our pipeline to be trained without any human annotations. 
+			We demonstrate high-quality and flexible portrait lighting editing capability with both quantitative and qualitative experiments. 
+			User study comparisons with commercial lighting editing tools also demonstrate consistent user preference for our method. 
+			</td>
+		</tr>
+	</table>
+
+	<br>
+	<hr>
+	<center><h1>Demo Video</h1></center>
+	<p align="center">
+	<video width="640" controls= "autoPlay" onended="this.currentTime=0; this.play()" autoplay="" src="resources/LightPainter_app_speed_up.mp4">
+		<source src="resources/LightPainter_app_speed_up.mp4" type="video/mp4">
+	</video>
+	</p>
+
+	<br>
+	<hr>
+	<table align=center width=1000px>
+		<center><h1>Method</h1></center>
+		<tr>
+			<td style="text-align: center"><img width=1000pt src="resources/model.png"></td>
+		</tr>
+		<tr>
+			<td>
+				An overview of LightPainter. As the user starts scribbling with our interactive application, the neural modules interactively render a realistic relit image that is faithful to the user input.			</td>
+		</tr>
+	</table>
+
+
+	<br>
+	<hr>
+	<center><h1>Creative Portrait Lighting</h1></center>
+	<p align="center">
+	<table align=center width=1000px>
+		<tr>
+			<td style="text-align: center"><img width=1000pt src="resources/more_results.png"></td>
+		</tr>
+	</table>
+	</p>
+
+	
+
+	<br>
+	<hr>
+	<table align=center width=450px>
+		<center><h1>Paper and Supplementary Material</h1></center>
+		<tr>
+			<td><a href="resources/CVPR2023_LightPainter.pdf"><img class="layered-paper-big" style="height:175px" src="./resources/paper.png"/></a></td>
+			<td><span style="font-size:14pt">
+				<b>LightPainter: Interactive Portrait Relighting with Freehand Scribble</b><br>
+				CVPR2023.<br>
+				<br>
+				<span style="font-size:4pt"><a href=""><br></a>
+				</span>
+			</td>
+		</tr>
+	</table>
+	<br>
+	<hr>
+	<br>
+
+	<table align=center width=900px>
+		<tr>
+			<td width=400px>
+				<center>
+					<h1>Acknowledgements</h1>
+					This template was originally made by <a href="http://web.mit.edu/phillipi/">Phillip Isola</a> and <a href="http://richzhang.github.io/">Richard Zhang</a>.
+				</center>
+			</td>
+		</tr>
+	</table>
+
+<br>
+</body>
+</html>
+

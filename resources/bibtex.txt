@@ -1,0 +1,6 @@
+@article{zeng2022scenecomposer,
+  title={LightPainter: Interactive Portrait Relighting with Freehand Scribble},
+  author={Mei, Yiqun and Zhang, He and Zhang, Xuaner and Zhang, Jianming and Shu, Zhixin and Wang, Yilin and Wei, Zijun and Yan, Shi and Jung, HyunJoon and Patel, Vishal, M.},
+  journal={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  year={2023}
+}
